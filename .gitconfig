@@ -1,0 +1,81 @@
+[user]
+    email = user@mail.com
+    name = Your name
+
+[color]
+    ui = auto
+
+[alias]
+    st = status
+    ci = commit
+    co = checkout
+    br = branch
+    rb = rebase
+    l1 = log --oneline
+    ds = diff --staged
+    di = diff
+    dt = difftool
+    gclean = gc --aggressive --prune=now
+    change-commits = "!f() { VAR1=$1; VAR='$'$1; OLD=$2; NEW=$3; echo \"Are you sure for replace $VAR $OLD => $NEW ?(Y/N)\";read OK;if [ \"$OK\" = 'Y' ] ; then shift 3; git filter-branch --env-filter \"if [ \\\"${VAR}\\\" = '$OLD' ]; then export $VAR1='$NEW';echo 'to $NEW'; fi\" $@; fi;}; f "
+    amend-date = "!f() { GIT_COMMITTER_DATE=\"$1\" git commit --amend --no-edit --date \"$1\"; }; f"
+    lgd = log --pretty=format:'%C(yellow)%h%Creset %C(blue)%ad%Creset %C(magenta)%cd%Creset %C(green)%an%Creset %C(red)%d%Creset %s' --date=iso --graph --all
+    lgs = log --pretty=format:'%h %ad %an %s' --date=short
+
+[push]
+    default = simple
+
+[pull]
+    rebase = true
+
+[merge]
+    tool = vimdiff
+
+[difftool]
+    prompt = false
+
+[pack]
+    threads = 4
+
+[log]
+    date = local
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+
+[init]
+	defaultBranch = main
+
+[core]
+    #gitproxy = /usr/local/bin/git-proxy
+    #excludesfile = /home/user/.gitignore
+    editor = hx
+    quotepath = false
+    autocrlf = input
+    pager = delta
+
+[rerere]
+    enabled = 1
+
+#[diff]
+#    external = delta --color-only
+
+#[interactive]
+#    diffFilter = delta --color-only
+
+[delta]
+    plus-color = "#012800"
+    minus-color = "#340001"
+    theme = 'Solarized (Dark)'
+    #features = side-by-side line-numbers decorations
+    features = side-by-side line-numbers
+    side-by-side = true
+    whitespace-error-style = 22 reverse
+
+#[delta "decorations"]
+#    commit-decoration-style = bold yellow box ul
+#    file-style = bold yellow ul
+#    file-decoration-style = none
+

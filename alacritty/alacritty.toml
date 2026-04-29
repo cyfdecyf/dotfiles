@@ -1,0 +1,31 @@
+[general]
+live_config_reload = true
+
+import = [
+    "theme/catppuccin-latte.toml",
+    #"theme/catppuccin-frappe.toml",
+    #"theme/selenized_dark.toml",
+]
+
+[font.normal]
+family = "MesloLGS NF"
+
+[font.bold]
+family = "MesloLGS NF Bold"
+
+[font.italic]
+family = "MesloLGS NF Italic"
+
+[font.bold_italic]
+family = "MesloLGS NF Bold Italic"
+
+[selection]
+save_to_clipboard = true
+
+[mouse]
+bindings = [
+    { mouse = "Right", action = "Paste" },
+]
+
+[env]
+TERM = "xterm-256color"
